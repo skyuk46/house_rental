@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
-    <head>
+<head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,12 +10,12 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Đăng nhập</title>
+    <title>Người cho thuê đăng ký</title>
 
-    <!-- Favicons -->
+      <!-- Favicons -->
     <link href="{% static 'img\favicon-2.png' %}" rel="icon">
     <link href="{% static 'img\apple-touch-icon.png' %}" rel="apple-touch-icon">
-    
+
     <!-- Icons font CSS-->
     <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
@@ -35,28 +35,20 @@
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                 <div class="card-heading"></div>
-                <div class="card-body">
-                    <h2 class="title">Đăng nhập tài khoản của bạn</h2>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <label style="color: lightblue;">
-                            {% for key, value in form.errors.items %}
-                            {{value}}
-                            {% endfor %}                        
-                        </label>
-                        <br>
-                        <p><label style="color: lightblue;">Tài khoản:</label>{{form.username}}</p>
-                        <p><label style="color: lightblue;">Mật khẩu:</label>{{form.password}}</p>
-                        <input type="hidden" name="next" value="/"/>
-                        <br>
-                        <input class="btn btn--pill btn--green" type="submit" value="Đăng nhập">
-                        <div style="color: lightblue;">
-                            Bạn chưa có tài khoản? 
+                <div class="card-body" style="color: lightblue;">
+                    <form method = "post" enctype="multipart/form-data"> 
+                        <h2 class="title">Thông tin đăng ký</h2>
+                        {% csrf_token %} 
+                        {{ form.as_p }} 
+                        <!-- put all form element into <p> tag -->
                             <br>
-                            <a href="/userRegister">Tạo mới tài khoản tại đây</a>
-                        </div>
-                </form>
-                </div>
+                            <div class="p-t-10">
+                                <button class="btn btn--pill btn--green" type="submit">Đăng ký</button>
+                            </div>    
+                        </br>
+                    </br>
+                    </form> 
+                    </div>
             </div>
         </div>
     </div>
@@ -70,7 +62,6 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/login-register.js' %}"></script>
-
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
