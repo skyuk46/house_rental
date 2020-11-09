@@ -86,6 +86,9 @@ DATABASES = {
         'HOST': 'sql12.freemysqlhosting.net',
         'PORT': '3306',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC',
+        'OPTIONS': {
+            'charset': 'utf8mb4'
+        }
     }
 }
 
@@ -132,7 +135,7 @@ STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media'), 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'web_console.Users'

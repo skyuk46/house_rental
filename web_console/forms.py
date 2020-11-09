@@ -14,8 +14,8 @@ class RoomDetailsPostForm(forms.ModelForm):
 
 class UserRegisterForm(forms.ModelForm):
     USER_CHOICES =( 
-        ("Cho thuê", "Người cho thuê"), 
-        ("Thuê", "Người thuê"), 
+        ("owner", "Người cho thuê"), 
+        ("renter", "Người thuê"), 
     ) 
 
     username = forms.CharField(required=True)

@@ -4,7 +4,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 
 def index(request):
-    return render(request, 'index.html')
+    bestRoom_raw = RoomDetails.objects.filter(balcony= 1)
+    if (len(bestRoom_raw) > 4):
+        bestRoom = bestRoom_raw[0:4]
+        print('0')
+    else:
+        bestRoom = bestRoom_raw
+
+    context = {
+        'bestRoom' : bestRoom,
+    }
+    return render(request, 'index.html',context)
 
 def about(request):
     return render(request, 'about.html')
