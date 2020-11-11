@@ -9,5 +9,7 @@ urlpatterns = [
    path('logout/',auth_views.LogoutView.as_view(next_page='/'),name='logout'),   
    path('userRegister/', views.userRegister),
    path('upload_post/',views.uploadPost),
-   path('RoomPost/',views.RoomPost)
+   path('RoomPost/',views.RoomPost),
+   path('roomDetails/', views.roomDetails),
+   path('roomList/',views.roomList)
 ]

@@ -10,7 +10,7 @@ class RoomDetailsPostForm(forms.ModelForm):
         model = RoomDetails
         #fields = ['productCode','productName', 'productLine','instock','sold','sale','price','description','images','image']
         fields = '__all__' 
-        #, use all the fields
+        #, use all the fields   
 
 class UserRegisterForm(forms.ModelForm):
     USER_CHOICES =( 

@@ -149,7 +149,7 @@
             <a class="nav-link" href="/about">Về chúng tôi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="property-grid.html">Nhà cho thuê</a>
+            <a class="nav-link" href="/roomList">Nhà cho thuê</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -359,7 +359,7 @@
               <h2 class="title-a">Phòng(Căn hộ) nổi bật</h2>
             </div>
             <div class="title-link">
-              <a href="property-grid.html">All Property
+              <a href="/roomList">Tất cả phòng
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -372,7 +372,7 @@
           <div class="carousel-item-b">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="{{ room.image1.url }}" alt="" class="img-a img-fluid">
+                <img src="{{ room.image1.url }}" alt="" class="img-a img-fluid" >
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
@@ -386,9 +386,12 @@
                       <span class="price-a">Cho thuê | {{ room.price }} triệu /tháng </span>
                     </div>
                     <br>
-                    <a href="#" class="link-a">Bấm để xem chi tiết
-                      <span class="ion-ios-arrow-forward"></span>
-                    </a>
+                    <form action = '/roomDetails'>
+                      <button style="border:1px solid transparent; background-color: transparent;">
+                        <p class="link-a">Bấm để xem chi tiết ></p>
+                      </button>
+                      <input type="hidden" name="roomDetails" value="{{ room.id }}">
+                    </form>
                   </div>
                   <div class="card-footer-a">
                     <ul class="card-info d-flex justify-content-around">
@@ -430,10 +433,10 @@
         <div class="col-md-12">
           <div class="title-wrap d-flex justify-content-between">
             <div class="title-box">
-              <h2 class="title-a">Best Agents</h2>
+              <h2 class="title-a">Nhân viên hàng đầu</h2>
             </div>
             <div class="title-link">
-              <a href="agents-grid.html">All Agents
+              <a href="agents-grid.html">Tất cả nhân viên
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -816,20 +819,20 @@
         <div class="col-sm-12 col-md-4">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">EstateAgency</h3>
+              <h3 class="w-title-a text-brand">EasyAccomod</h3>
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                Công ty chúng tôi cung cấp dịch vụ cho thuê nhà
+                căn hộ, phòng trọ với giá rẻ nhất và đảm bảo chất lượng
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Email .</span> EasyAccomod@gmail.com</li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +54 356 945234</li>
+                  <span class="color-text-a">Điện thoại .</span> 0347088691 </li>
               </ul>
             </div>
           </div>
@@ -837,19 +840,19 @@
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Company</h3>
+              <h3 class="w-title-a text-brand">Công ty</h3>
             </div>
             <div class="w-body-a">
               <div class="w-body-a">
                 <ul class="list-unstyled">
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Địa chỉ trên bản đồ</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Tính hợp pháp</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Nhân viên quản lý</a>
                   </li>
                   <li class="item-list-a">
                     <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
@@ -858,7 +861,7 @@
                     <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Chính sách bảo mật</a>
                   </li>
                 </ul>
               </div>
@@ -868,7 +871,7 @@
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">International sites</h3>
+              <h3 class="w-title-a text-brand">Hoạt động quốc tế</h3>
             </div>
             <div class="w-body-a">
               <ul class="list-unstyled">
@@ -904,13 +907,13 @@
           <nav class="nav-footer">
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#">Home</a>
+                <a href="/">Trang chủ</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">About</a>
+                <a href="/about">Về chúng tôi</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Property</a>
+                <a href="#">Nhà cho thuê</a>
               </li>
               <li class="list-inline-item">
                 <a href="#">Blog</a>
@@ -982,7 +985,7 @@
   <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
   <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %}"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script src="{% static 'contactform/contactform.js' %}"></script>
 
   <!-- Template Main Javascript File -->
   <script src="{% static 'js/main.js' %}"></script>

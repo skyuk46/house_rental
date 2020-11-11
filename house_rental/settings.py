@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'web_console'
+    'web_console',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'house_rental.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sql12374305',
-        'USER': 'sql12374305',
-        'PASSWORD': 'ap8XpaIm1T',
-        'HOST': 'sql12.freemysqlhosting.net',
+        'NAME': 'Akb2XkgQMD',
+        'USER': 'Akb2XkgQMD',
+        'PASSWORD': '9Aa4T3fFeo',
+        'HOST': 'remotemysql.com',
         'PORT': '3306',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC',
         'OPTIONS': {

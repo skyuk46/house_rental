@@ -41,6 +41,7 @@ class RoomDetails(models.Model):
     id = models.AutoField(primary_key=True)
     roomAddress = models.TextField()
     roomType = models.CharField(max_length=100, choices= roomType_choices)
+    roomDescription = models.TextField(default="(Không có mô tả)")
     price = models.FloatField()
     owner_id = models.IntegerField()
     comment = models.TextField()

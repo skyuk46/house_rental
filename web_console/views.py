@@ -43,3 +43,19 @@ def userRegister(request):
     else: 
 	    form = UserRegisterForm() 
     return render(request, 'userRegister.html', {'form' : form})
+
+def roomDetails(request):
+    if request.method == 'GET':
+        id = int(request.GET.get('roomDetails'))
+        room = RoomDetails.objects.get(id = id)
+        context = {
+            'room' : room,
+        }
+        return render(request, 'room-detail.html',context)
+
+def roomList(request):
+    roomList = RoomDetails.objects.all()
+    context = {
+        'roomList' : roomList
+    }
+    return render(request,'room-list.html',context)
