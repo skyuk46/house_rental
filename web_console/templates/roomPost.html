@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Người thuê đăng ký</title>
+    <title>Đăng bài cho thuê</title>
 
       <!-- Favicons -->
     <link href="{% static 'img\favicon-2.png' %}" rel="icon">
@@ -34,31 +34,25 @@
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
+                <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title"><div style="text-align: center;">Đăng bài cho thuê phòng</div></h2>
-                    <form method="POST">
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Địa chỉ" name="address">
+                    <h2 class="title">Đăng bài cho thuê</h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        <label style="color: lightblue;">
+                            {% for key, value in form.errors.items %}
+                            {{value}}
+                            {% endfor %}                        
+                        </label>
+                        <div style="color: lightblue;">
+                            {% csrf_token %}
+                            {{ form.as_p }} 
                         </div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="room_type">
-                                    <option disabled="disabled" selected="selected">Loại phòng</option>
-                                    <option>Phòng trọ</option>
-                                    <option>Chung cư mini</option>
-                                    <option>Chung cư nguyên căn</option>
-                                    <option>Nhà nguyên căn</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Gần địa điểm công cộng" name="near">
-                        </div>
-                        <div class="p-t-10">
-                            <button class="btn btn--pill btn--green" type="submit">Submit</button>
-                        </div>
-                    </form>
+                        <br>
+                        <input class="btn btn--pill btn--green" type="submit" value="Đăng bài">
+                        {% if response %}
+                            <h4 style="color: green;"> {{ response }}</h4>
+                        {% endif %}
+                </form>
                 </div>
             </div>
         </div>
@@ -73,6 +67,7 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/login-register.js' %}"></script>
+
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

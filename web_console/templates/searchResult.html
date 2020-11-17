@@ -188,7 +188,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h3 class="title-single">{{ room.roomAddress }}</h3>
+            <h1 class="title-single">Kết quả tìm kiếm:</h1>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -197,11 +197,8 @@
               <li class="breadcrumb-item">
                 <a>Trang chủ</a>
               </li>
-              <li class="breadcrumb-item">
-                <a>Danh sách phòng</a>
-              </li>
               <li class="breadcrumb-item active" aria-current="page">
-                {{ room.roomAddress }}
+                Danh sách phòng
               </li>
             </ol>
           </nav>
@@ -211,167 +208,91 @@
   </section>
   <!--/ Intro Single End /-->
 
-  <!--/ Property Single Star /-->
-  <section class="property-single nav-arrow-b">
+  <!--/ Property Grid Star /-->
+  <section class="property-grid grid">
     <div class="container">
-      <div class="row">
+      <div id="list_container" class="row">
         <div class="col-sm-12">
-          <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-            <div class="carousel-item-b">
-              <img src="{{ room.image2.url}}" alt="" height="700" width="300">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{{ room.image1.url}}" alt="" height="700" width="300">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{{ room.image3.url}}" alt="" height="700" width="300">
-            </div>
-          </div>
-          <div class="row justify-content-between">
-            <div class="col-md-5 col-lg-4">
-              <div class="property-price d-flex justify-content-center foo">
-                <div class="card-header-c d-flex">
-                  <div class="card-box-ico">
-                    <span class="ion-money">triệu</span>
-                  </div>
-                  <div class="card-title-c align-self-center">
-                    <h5 class="title-c">{{ room.price }}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="property-summary">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="title-box-d section-t4">
-                      <h3 class="title-d">Tổng quan</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="summary-list">
-                  <ul class="list">
-                    <li class="d-flex justify-content-between">
-                      <strong>Chủ thuê:</strong>
-                      <span>{{ owner.name }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>ID phòng:</strong>
-                      <span>{{ room.id }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Loại phòng:</strong>
-                      <span>{{ room.roomType}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Tình trạng:</strong>
-                      <span>{{ room.status }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Diện tích:</strong>
-                      <span>{{ room.area }}m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Phòng ngủ:</strong>
-                      <span>{{ room.bedroom}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Phòng tắm:</strong>
-                      <span>{{ room.bathroom }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Bếp:</strong>
-                      <span>{{ room.kitchen }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Giá điện:</strong>
-                      <span>{{ room.electricPrice }} đồng/số</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Giá nước:</strong>
-                      <span>{{ room.waterPrice }} đồng/số</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-7 col-lg-7 section-md-t3">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="title-box-d">
-                    <h3 class="title-d">Mô tả phòng(căn hộ):</h3>
-                  </div>
-                </div>
-              </div>
-              <div class="property-description">
-                <p class="description color-text-a">
-                  {{ room.roomDescription }}
-                </p>
-              </div>
-              <div class="row section-t3">
-                <div class="col-sm-12">
-                  <div class="title-box-d">
-                    <h3 class="title-d">Tiện nghi</h3>
-                  </div>
-                </div>
-              </div>
-              <div class="amenities-list color-text-a">
-                <ul class="list-a no-margin">
-                  <li>Mạng Wifi</li>
-                  <li>Tủ lạnh</li>
-                  <li>Có TV</li>
-                  <li>Điều hòa</li>
-                  <li>Ban công</li>
-                  <li>Phòng mới</li>
-                  <li>Khu dân trí cao</li>
-                </ul>
-              </div>
-            </div>
+          <div class="grid-option">
+            <form>
+              <select id= "sort" class="custom-select">
+                <option selected>All</option>
+                <option value="high">Giá cao xuống thấp</option>
+                <option  value="low">Giá thấp lên cao</option>
+                <option value="big">Diện tích lớn đến bé</option>
+                <option value="small">Diện tích bé đến lớn</option>
+              </select>
+            </form>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-3 col-lg-4" >
-              &nbsp;
-            </div>
-            <div class="col-md-3 col-lg-4" >
-              &nbsp;
-            </div>
-            <div class="col-md-3 col-lg-4">
-              <div class="property-contact">
-                <form class="form-a">
-                  <div class="row">
-                    <div class="col-md-12 mb-1">
-                      <div class="form-group">
-                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName"
-                          placeholder="Tên *" required>
-                      </div>
-                    </div>
-                    <div class="col-md-12 mb-1">
-                      <div class="form-group">
-                        <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1"
-                          placeholder="Email *" required>
-                      </div>
-                    </div>
-                    <div class="col-md-12 mb-1">
-                      <div class="form-group">
-                        <textarea id="textMessage" class="form-control" placeholder="Bình luận *" name="message" cols="45"
-                          rows="8" required></textarea>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <button type="submit" class="btn btn-a">Nhận xét</button>
-                    </div>
+       <br/>
+       <div class="col-sm-12" style="text-align: center;">
+        <h4> ({{ lenSearchResult }} kết quả tìm được)</h4>
+       </div>
+       <br>
+       {% if searchResult %}
+          {% for room in searchResult %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ room.image1.url }}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html"> {{ room.roomAddress }}</a>
+                    </h2>
                   </div>
-                </form>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Cho thuê | {{ room.price }} triệu /tháng </span>
+                    </div>
+                    <br>
+                    <form action = '/roomDetails'>
+                      <button style="border:1px solid transparent; background-color: transparent;">
+                        <p class="link-a">Bấm để xem chi tiết ></p>
+                      </button>
+                      <input type="hidden" name="roomDetails" value="{{ room.id }}">
+                    </form>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Diện tích</h4>
+                        <span >
+                          <span id= "area">{{ room.area }}</span>
+                          m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Phòng ngủ</h4>
+                        <span>{{ room.bedroom }}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Nhà tắm</h4>
+                        <span>{{ room.bathroom }}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Bếp</h4>
+                        <span>{{ room.kitchen }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          {% endfor %}
+        {% endif %}
+        <br>
+        <div class="col-sm-12" style="text-align: center;">
+            <h4> (Kết thúc kết quả) </h4>
+        </div>    
       </div>
-    </div>
   </section>
-  <!--/ Property Single End /-->
+  <!--/ Property Grid End /-->
 
   <!--/ footer Star /-->
   <section class="section-footer">
@@ -512,6 +433,7 @@
   <!-- Template Main Javascript File -->
   <script src="{% static 'js/main.js' %}"></script>
 
+  <script src="{% static 'js/sort.js' %}"></script>
 
 </body>
 </html>

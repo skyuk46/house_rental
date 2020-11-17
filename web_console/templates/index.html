@@ -39,81 +39,80 @@
     </div>
     <span class="close-box-collapse right-boxed ion-ios-close"></span>
     <div class="box-collapse-wrap form">
-      <form class="form-a">
+      <form class="form-a" action= '/search'>
         <div class="row">
           <div class="col-md-12 mb-2">
             <div class="form-group">
               <label for="Type">Từ khóa</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword" name="Keyword">
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="Type">Loại phòng</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>Tất cả các loại</option>
-                <option>Phòng trọ</option>
-                <option>Chung cư mini</option>
-                <option>Chung cư nguyên căn</option>
-                <option>Nhà nguyên căn</option>
+              <select class="form-control form-control-lg form-control-a" id="Type" name='roomType'>
+                <option value="All">Tất cả các loại</option>
+                <option value="Phòng trọ">Phòng trọ</option>
+                <option value="Chung cư mini">Chung cư mini</option>
+                <option value="Chung cư">Chung cư</option>
+                <option value="Nhà nguyên căn">Nhà nguyên căn</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="city">Thành phố</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>Tất cả thành phố</option>
-                <option>Hà Nội</option>
-                <option>Hồ Chí Minh</option>
-                <option>California</option>
-                <option>Colorado</option>
+              <label for="city">Quận</label>
+              <select class="form-control form-control-lg form-control-a" id="district" name='district'>
+                <option value="All">Tất cả quận</option>
+                <option value="Ba Đình">Ba Đình</option>
+                <option value="YTây Hồ">Tây Hồ</option>
+                <option value="Cầu Giấy">Cầu Giấy</option>
+                <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+                <option value="Đống Đa">Đống Đa</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <label for="bedrooms">Diện tích</label>
+              <select class="form-control form-control-lg form-control-a" id="area" name="area">
+                <option value="1000">Tùy ý</option>
+                <option value="100"> < 100m<sup>2</sup></option>
+                <option value="60"> < 60m<sup>2</sup></option>
+                <option value="40"> < 40m<sup>2</sup></option>
+                <option value="20"> < 20m<sup>2</sup></option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
+              <label for="garages">Phòng ngủ</label>
+              <select class="form-control form-control-lg form-control-a" id="bedrooms" name="bedrooms">
+                <option value="100">Tùy ý</option>
+                <option value="5"> < 5</option>
+                <option value="4"> < 4</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <label for="bathrooms">Phòng tắm</label>
+              <select class="form-control form-control-lg form-control-a" id="bathrooms" name="bathrooms">
+                <option value="100">Tùy ý</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
+              <label for="bathrooms">Bếp</label>
+              <select class="form-control form-control-lg form-control-a" id="kitchen" name="kitchens">
+                <option value="100">Tùy ý</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
@@ -459,7 +458,7 @@
               </div>
               <div class="card-body-d">
                 <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  Tốt bụng, ham học hỏi, đam mê gà chọi.
                 </p>
                 <div class="info-agents color-a">
                   <p>
@@ -625,193 +624,6 @@
   </section>
   <!--/ Agents End /-->
 
-  <!--/ News Star /-->
-  <section class="section-news section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Latest News</h2>
-            </div>
-            <div class="title-link">
-              <a href="blog-grid.html">All News
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="new-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-2.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">House</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">House is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-5.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-7.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Park</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Park is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-3.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="#">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ News End /-->
-
-  <!--/ Testimonials Star /-->
-  <section class="section-testimonials section-t8 nav-arrow-a">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Testimonials</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="img/testimonial-1.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                    debitis hic ber quibusdam
-                    voluptatibus officia expedita corpori.
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Albert & Erika</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="img/testimonial-2.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                    debitis hic ber quibusdam
-                    voluptatibus officia expedita corpori.
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Pablo & Emma</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Testimonials End /-->
-
   <!--/ footer Star /-->
   <section class="section-footer">
     <div class="container">
@@ -846,19 +658,13 @@
               <div class="w-body-a">
                 <ul class="list-unstyled">
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Địa chỉ trên bản đồ</a>
+                    <i class="fa fa-angle-right"></i> <a href="https://www.google.com/maps/place/144+Xu%C3%A2n+Th%E1%BB%A7y,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0368609,105.7801041,17z/data=!3m1!4b1!4m5!3m4!1s0x313454caaf9fa467:0x4cfd76cf514e1ce1!8m2!3d21.0368559!4d105.7822928?hl=vi-VN">Địa chỉ trên bản đồ</a>
                   </li>
                   <li class="item-list-a">
                     <i class="fa fa-angle-right"></i> <a href="#">Tính hợp pháp</a>
                   </li>
                   <li class="item-list-a">
                     <i class="fa fa-angle-right"></i> <a href="#">Nhân viên quản lý</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
                   </li>
                   <li class="item-list-a">
                     <i class="fa fa-angle-right"></i> <a href="#">Chính sách bảo mật</a>
@@ -876,22 +682,22 @@
             <div class="w-body-a">
               <ul class="list-unstyled">
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Venezuela</a>
+                  <i class="fa fa-angle-right"></i> <a >Viet Nam</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">China</a>
+                  <i class="fa fa-angle-right"></i> <a>China</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Hong Kong</a>
+                  <i class="fa fa-angle-right"></i> <a>Hong Kong</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Argentina</a>
+                  <i class="fa fa-angle-right"></i> <a>Argentina</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Singapore</a>
+                  <i class="fa fa-angle-right"></i> <a>Singapore</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Philippines</a>
+                  <i class="fa fa-angle-right"></i> <a>Philippines</a>
                 </li>
               </ul>
             </div>
@@ -913,49 +719,17 @@
                 <a href="/about">Về chúng tôi</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Nhà cho thuê</a>
+                <a href="/roomList">Nhà cho thuê</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
+                <a href="#">Yêu thích</a>
               </li>
             </ul>
           </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-dribbble" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
           <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright
-              <span class="color-a">EstateAgency</span> All Rights Reserved.
+              <span class="color-a">EasyAccomod</span> All Rights Reserved.
             </p>
           </div>
           <div class="credits">
@@ -965,7 +739,6 @@
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
             -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
       </div>

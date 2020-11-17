@@ -40,81 +40,80 @@
     </div>
     <span class="close-box-collapse right-boxed ion-ios-close"></span>
     <div class="box-collapse-wrap form">
-      <form class="form-a">
+      <form class="form-a" action= '/search'>
         <div class="row">
           <div class="col-md-12 mb-2">
             <div class="form-group">
               <label for="Type">Từ khóa</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword" name="Keyword">
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="Type">Loại phòng</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>Tất cả các loại</option>
-                <option>Phòng trọ</option>
-                <option>Chung cư mini</option>
-                <option>Chung cư nguyên căn</option>
-                <option>Nhà nguyên căn</option>
+              <select class="form-control form-control-lg form-control-a" id="Type" name='roomType'>
+                <option value="All">Tất cả các loại</option>
+                <option value="Phòng trọ">Phòng trọ</option>
+                <option value="Chung cư mini">Chung cư mini</option>
+                <option value="Chung cư">Chung cư</option>
+                <option value="Nhà nguyên căn">Nhà nguyên căn</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="city">Thành phố</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>Tất cả thành phố</option>
-                <option>Hà Nội</option>
-                <option>Hồ Chí Minh</option>
-                <option>California</option>
-                <option>Colorado</option>
+              <label for="city">Quận</label>
+              <select class="form-control form-control-lg form-control-a" id="district" name='district'>
+                <option value="All">Tất cả quận</option>
+                <option value="Ba Đình">Ba Đình</option>
+                <option value="YTây Hồ">Tây Hồ</option>
+                <option value="Cầu Giấy">Cầu Giấy</option>
+                <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+                <option value="Đống Đa">Đống Đa</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <label for="bedrooms">Diện tích</label>
+              <select class="form-control form-control-lg form-control-a" id="area" name="area">
+                <option value="1000">Tùy ý</option>
+                <option value="100"> < 100m<sup>2</sup></option>
+                <option value="60"> < 60m<sup>2</sup></option>
+                <option value="40"> < 40m<sup>2</sup></option>
+                <option value="20"> < 20m<sup>2</sup></option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
+              <label for="garages">Phòng ngủ</label>
+              <select class="form-control form-control-lg form-control-a" id="bedrooms" name="bedrooms">
+                <option value="100">Tùy ý</option>
+                <option value="5"> < 5</option>
+                <option value="4"> < 4</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <label for="bathrooms">Phòng tắm</label>
+              <select class="form-control form-control-lg form-control-a" id="bathrooms" name="bathrooms">
+                <option value="100">Tùy ý</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
+              <label for="bathrooms">Bếp</label>
+              <select class="form-control form-control-lg form-control-a" id="kitchen" name="kitchens">
+                <option value="100">Tùy ý</option>
+                <option value="3"> < 3</option>
+                <option value="2"> < 2</option>
               </select>
             </div>
           </div>
@@ -466,20 +465,20 @@
         <div class="col-sm-12 col-md-4">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">EstateAgency</h3>
+              <h3 class="w-title-a text-brand">EasyAccomod</h3>
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                Công ty chúng tôi cung cấp dịch vụ cho thuê nhà
+                căn hộ, phòng trọ với giá rẻ nhất và đảm bảo chất lượng
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Email .</span> EasyAccomod@gmail.com</li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +54 356 945234</li>
+                  <span class="color-text-a">Điện thoại .</span> 0347088691 </li>
               </ul>
             </div>
           </div>
@@ -487,28 +486,22 @@
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Company</h3>
+              <h3 class="w-title-a text-brand">Công ty</h3>
             </div>
             <div class="w-body-a">
               <div class="w-body-a">
                 <ul class="list-unstyled">
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
+                    <i class="fa fa-angle-right"></i> <a href="https://www.google.com/maps/place/144+Xu%C3%A2n+Th%E1%BB%A7y,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0368609,105.7801041,17z/data=!3m1!4b1!4m5!3m4!1s0x313454caaf9fa467:0x4cfd76cf514e1ce1!8m2!3d21.0368559!4d105.7822928?hl=vi-VN">Địa chỉ trên bản đồ</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Tính hợp pháp</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Nhân viên quản lý</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
+                    <i class="fa fa-angle-right"></i> <a href="#">Chính sách bảo mật</a>
                   </li>
                 </ul>
               </div>
@@ -518,27 +511,27 @@
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">International sites</h3>
+              <h3 class="w-title-a text-brand">Hoạt động quốc tế</h3>
             </div>
             <div class="w-body-a">
               <ul class="list-unstyled">
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Venezuela</a>
+                  <i class="fa fa-angle-right"></i> <a >Viet Nam</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">China</a>
+                  <i class="fa fa-angle-right"></i> <a>China</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Hong Kong</a>
+                  <i class="fa fa-angle-right"></i> <a>Hong Kong</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Argentina</a>
+                  <i class="fa fa-angle-right"></i> <a>Argentina</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Singapore</a>
+                  <i class="fa fa-angle-right"></i> <a>Singapore</a>
                 </li>
                 <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Philippines</a>
+                  <i class="fa fa-angle-right"></i> <a>Philippines</a>
                 </li>
               </ul>
             </div>
@@ -554,55 +547,23 @@
           <nav class="nav-footer">
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#">Home</a>
+                <a href="/">Trang chủ</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">About</a>
+                <a href="/about">Về chúng tôi</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Property</a>
+                <a href="/roomList">Nhà cho thuê</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
+                <a href="#">Yêu thích</a>
               </li>
             </ul>
           </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-dribbble" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
           <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright
-              <span class="color-a">EstateAgency</span> All Rights Reserved.
+              <span class="color-a">EasyAccomod</span> All Rights Reserved.
             </p>
           </div>
           <div class="credits">
@@ -612,7 +573,6 @@
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
             -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
       </div>
