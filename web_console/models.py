@@ -20,6 +20,16 @@ class Users(AbstractUser):
     def __str__(self):
         return self.email
 
+class WaitingList(models.Model):
+    username = models.CharField(default='',max_length=50, unique=True)
+    email = models.EmailField(_('Email address'), default='a@gmail.com')
+    password = models.CharField(default='',max_length=100)
+    name = models.CharField(max_length=50,default='A')
+    birth = models.DateField(default='2020-11-9')
+    phone = models.CharField(max_length=15,default='0214567123')
+    address = models.CharField(max_length=200, default="")
+    user_type = models.CharField(max_length=20,default='admin')
+
 class Request(models.Model):
     id = models.AutoField(primary_key=True)
     room_id = models.IntegerField()

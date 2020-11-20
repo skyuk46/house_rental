@@ -38,16 +38,26 @@
                 <div class="card-body" style="color: lightblue;">
                     <form method = "post" enctype="multipart/form-data"> 
                         <h2 class="title">Thông tin đăng ký</h2>
-                        {% csrf_token %} 
-                        {{ form.as_p }} 
+                        {% csrf_token %}
+                        {% if form %} 
+                        {{ form.as_p }}
                         <!-- put all form element into <p> tag -->
-                            <br>
+                        <br>
                             <div class="p-t-10">
                                 <button class="btn btn--pill btn--green" type="submit">Đăng ký</button>
                             </div>    
                         </br>
-                    </br>
+                        <div style="color: lightblue;">
+                            Bạn đã có tài khoản? 
+                            <br>
+                            <a href="/login">Đăng nhập tại đây</a>
+                        </div>
+                        {% endif %}
                     </form> 
+                    {% if message %}
+                        <p style="color: lightblue;">{{ message }}</p>
+                        <a href="/" style="color: lightblue;"> Trở về trang chủ</a>
+                    {% endif %}
                     </div>
             </div>
         </div>

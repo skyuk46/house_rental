@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>Easy Accomod-Thuê nhà giá rẻ</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+      
+        <!-- Favicons -->
+        <link href="{% static 'img\favicon-2.png' %}" rel="icon">
+        <link href="{% static 'img\apple-touch-icon.png' %}" rel="apple-touch-icon">
+      
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+        <link href="{% static 'css\user-confirm.css' %}" rel="stylesheet">
+      
+    </head>
+    <body onload="load()">
+        <section>
+            <!--for demo wrap-->
+            <h1>Danh sách đăng ký cho thuê</h1>
+            <div class="tbl-header">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Mật khẩu</th>
+                    <th>Email</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Chấp nhận</th>
+                    <th>Từ chối</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tbl-content">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  {% if waitingList %}
+                    {% for user in waitingList %}
+                    <form action="/userConfirm">
+                      {% csrf_token %}
+                      <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.birth }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>
+                          <button style="color: green; border:1px solid transparent; background-color: transparent;"  class="accept">Chấp nhận</button>
+                        </td>
+                        <td>
+                          <button style="color: red; border:1px solid transparent; background-color: transparent;" class="decline">Từ chối</button>
+                        </td>
+                        <input type="hidden" name='username' value="{{ user.username }}">
+                        <input type="hidden" name="decision" class="decision">
+                      </tr>
+                    </form>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <div  style="text-align: center;">
+            <a href="/"> Trở về trang chủ </a>   
+          </div>
+    </body>
+    <script type="text/javascript" src="{% static 'js\user-confirm.js' %}"></script>
+</html>

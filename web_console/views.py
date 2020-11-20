@@ -32,10 +32,16 @@ def RoomPost(request):
 def userRegister(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
-
-        if form.is_valid():
+        confirmed = 0
+        if (form.data['user_type'] == "renter"):
+            confirmed = 1
+        if form.is_valid() and confirmed == 1:
             form.save()
             return HttpResponseRedirect('/')
+        else:
+            waitingUser = WaitingList(username=form.cleaned_data['username'], email=form.cleaned_data['email'], password=form.cleaned_data['password'], name = form.cleaned_data['name'], birth = form.cleaned_data['birth'], phone = form.cleaned_data['phone'], address = form.cleaned_data['address'], user_type = form.cleaned_data['user_type'])
+            waitingUser.save()
+            return render(request,'userRegister.html',{'message': "Tài khoản của bạn đang được xét duyệt"})
     else: 
 	    form = UserRegisterForm() 
     return render(request, 'userRegister.html', {'form' : form})
@@ -93,3 +99,31 @@ def ownerRoomList(request):
         'roomList' : roomList
     }
     return render(request,'owner-room-list.html',context)
+
+def userConfirm(request):
+    if (request.method == "GET"):
+        decision = request.GET.get('decision')
+        username = request.GET.get('username')
+        print(decision)
+        print(username)
+        if (username):
+            user = WaitingList.objects.get(username=username)
+            if (decision == 'accept'):
+                email = user.email
+                password = user.password
+                name = user.name
+                birth = user.birth
+                phone = user.phone
+                address = user.address
+                Users.objects.create_user(username=username, email=email,password = password, name = name, birth = birth, phone = phone, address = address, user_type = "owner")
+                WaitingList.objects.get(username= username).delete()
+                return HttpResponseRedirect('/userConfirm')
+            elif (decision == 'decline'):
+                WaitingList.objects.get(username= username).delete()
+                return HttpResponseRedirect('/userConfirm')
+            
+    waitingList = WaitingList.objects.all()
+    context = {
+        'waitingList' : waitingList
+    }
+    return render(request,'user-confirm.html',context)

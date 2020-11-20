@@ -12,5 +12,6 @@ urlpatterns = [
    path('roomDetails/', views.roomDetails),
    path('roomList/',views.roomList),
    path('search/', views.search),
-   path('ownerRoomList',views.ownerRoomList)
+   path('ownerRoomList',views.ownerRoomList),
+   path('userConfirm',views.userConfirm)
 ]
