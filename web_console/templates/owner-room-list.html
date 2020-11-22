@@ -23,9 +23,33 @@
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css\notification.css' %}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="{% static 'css\style.css' %}" rel="stylesheet">
+
+  <style>
+    .notification::after {
+      min-width: 15px;
+      height: 15px;
+      content: "{{ waitingCount }}";
+      background-color: #ed657d;
+      font-family: monospace;
+      font-weight: bolt;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      transition: .3s;
+      opacity: 0;
+      transform: scale(.5);
+      will-change: opacity, transform;
+  }
+  </style>
 
 </head>
 
@@ -165,13 +189,44 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Yêu thích</a>
           </li>
-        <li class="nav-item">
-          {% if user.username %}
-            <a class="nav-link" href = "/logout">Logout</a>
+          {% if user.is_superuser %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="{% static 'img\admin.png'%}" width="30" height="30">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/userConfirm">Duyệt tài khoản</a>
+              <a class="dropdown-item" href="/logout">Đăng xuất</a>
+            </div>
+          </li>
+          {% elif user.username %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="{% static 'img\user.png'%}" width="30" height="30">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Quản lý tài khoản</a>
+              <a class="dropdown-item" href="/logout">Đăng xuất</a>
+            </div>
+          </li>
           {% else %}
-            <a class="nav-link" href="/login">Đăng nhập</a>
+          <li class="nav-item">
+            <a class="nav-link" href = "/login">Đăng nhập</a>
+          </li>
           {% endif %}
-        </li>
+          {% if user.username == "admin" %}
+            {% if waitingCount > 0 %}
+            <li class="nav-item">
+            <a class="nav-link" href="/userConfirm"><div id="notification" class="notification notify show-count"></div></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="/userConfirm"><div id="notification" class="notification"></div></a>
+            </li>
+            {% endif %}
+          {% endif %}
       </ul>
       </div>
       <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
@@ -242,7 +297,7 @@
                   </div>
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">Cho thuê | {{ room.price }} triệu /tháng </span>
+                      Cho thuê | <span class="price-a">{{ room.price }}</span> triệu /tháng 
                     </div>
                     <br>
                     <form action = '/roomDetails'>

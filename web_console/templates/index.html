@@ -23,9 +23,33 @@
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css\notification.css' %}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="{% static 'css\style.css' %}" rel="stylesheet">
+
+  <style>
+    .notification::after {
+      min-width: 15px;
+      height: 15px;
+      content: "{{ waitingCount }}";
+      background-color: #ed657d;
+      font-family: monospace;
+      font-weight: bolt;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      transition: .3s;
+      opacity: 0;
+      transform: scale(.5);
+      will-change: opacity, transform;
+  }
+  </style>
 
 </head>
 
@@ -180,6 +204,17 @@
             <a class="nav-link" href = "/login">Đăng nhập</a>
           </li>
           {% endif %}
+          {% if user.username == "admin" %}
+            {% if waitingCount > 0 %}
+            <li class="nav-item">
+            <a class="nav-link" href="/userConfirm"><div id="notification" class="notification notify show-count"></div></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="/userConfirm"><div id="notification" class="notification"></div></a>
+            </li>
+            {% endif %}
+          {% endif %}
       </ul>
       </div>
       <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
@@ -201,13 +236,13 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345</p>
+                    <p class="intro-title-top">Cho thuê nhà
+                      <br> EasyAccomod</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Mount
-                      <br> Olive Road Two</h1>
+                      <span class="color-b">Rẻ, </span> Đẹp
+                      <br> Chất lượng cao</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href="#room"><span class="price-a">Hãy đến với chúng tôi</span></a>
                     </p>
                   </div>
                 </div>
@@ -224,13 +259,13 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345</p>
+                    <p class="intro-title-top">Cho thuê nhà
+                      <br> EasyAccomod</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Rino
-                      <br> Venda Road Five</h1>
+                      <span class="color-b">Ân </span> cần
+                      <br> Dịch vụ đảm bảo </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href=".#service"><span class="price-a">Hãy đến với chúng tôi</span></a>
                     </p>
                   </div>
                 </div>
@@ -247,13 +282,13 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345</p>
+                    <p class="intro-title-top">Cho thuê nhà
+                      <br> EasyAccomod</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Alira
-                      <br> Roan Road One</h1>
+                      <span class="color-b">Nhân </span> viên
+                      <br> Thân thiện, nhiệt tình</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href="#staff"><span class="price-a">Hãy đến với chúng tôi</span></a>
                     </p>
                   </div>
                 </div>
@@ -267,7 +302,7 @@
   <!--/ Carousel end /-->
 
   <!--/ Services Star /-->
-  <section class="section-services section-t8">
+  <section class="section-services section-t8" id="service">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -357,7 +392,7 @@
   <!--/ Services End /-->
 
   <!--/ Property Star /-->
-  <section class="section-property section-t8">
+  <section class="section-property section-t8" id="room">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -434,7 +469,7 @@
   <!--/ Property End /-->
 
   <!--/ Agents Star /-->
-  <section class="section-agents section-t8">
+  <section class="section-agents section-t8" id="staff">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

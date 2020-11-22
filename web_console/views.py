@@ -11,13 +11,18 @@ def index(request):
     else:
         bestRoom = bestRoom_raw
 
+    waitingUser = WaitingList.objects.all()
+    waitingCount = len(waitingUser)
     context = {
         'bestRoom' : bestRoom,
+        'waitingCount' : waitingCount
     }
     return render(request, 'index.html',context)
 
 def about(request):
-    return render(request, 'about.html')
+    waitingUser = WaitingList.objects.all()
+    waitingCount = len(waitingUser)
+    return render(request, 'about.html',{'waitingCount' : waitingCount})
 
 def RoomPost(request):
 	if request.method == 'POST':
@@ -52,16 +57,22 @@ def roomDetails(request):
         room = RoomDetails.objects.get(id = id)
         ownerId = room.owner_id
         owner = Users.objects.get(user_id = ownerId)
+        waitingUser = WaitingList.objects.all()
+        waitingCount = len(waitingUser)
         context = {
             'room' : room,
-            'owner' : owner
+            'owner' : owner,
+            'waitingCount' : waitingCount
         }
         return render(request, 'room-detail.html',context)
 
 def roomList(request):
     roomList = RoomDetails.objects.all()
+    waitingUser = WaitingList.objects.all()
+    waitingCount = len(waitingUser)
     context = {
-        'roomList' : roomList
+        'roomList' : roomList,
+        'waitingCount' : waitingCount
     }
     return render(request,'room-list.html',context)
 
@@ -85,9 +96,12 @@ def search(request):
 
     searchResult = searchResult_raw3.filter(area__lt = area, bedroom__lt = bedrooms, bathroom__lt = bathrooms, kitchen__lt = kitchens)
     lenSearchResult = len(searchResult)
+    waitingUser = WaitingList.objects.all()
+    waitingCount = len(waitingUser)
     context = {
         'searchResult' : searchResult,
-        'lenSearchResult' : lenSearchResult
+        'lenSearchResult' : lenSearchResult,
+        'waitingCount' : waitingCount
     }
     return render(request,'searchResult.html',context)
 
@@ -95,8 +109,11 @@ def ownerRoomList(request):
     # ownerId = request.GET.get('ownerId')
     ownerId = 1
     roomList = RoomDetails.objects.filter(owner_id=ownerId)
+    waitingUser = WaitingList.objects.all()
+    waitingCount = len(waitingUser)
     context = {
-        'roomList' : roomList
+        'roomList' : roomList,
+        'waitingCount' : waitingCount
     }
     return render(request,'owner-room-list.html',context)
 
