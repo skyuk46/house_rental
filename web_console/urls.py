@@ -12,6 +12,7 @@ urlpatterns = [
    path('roomDetails/', views.roomDetails),
    path('roomList/',views.roomList),
    path('search/', views.search),
-   path('ownerRoomList',views.ownerRoomList),
-   path('userConfirm',views.userConfirm)
+   path('ownerRoomList/',views.ownerRoomList),
+   path('userConfirm/',views.userConfirm),
+   path('postComment/',views.postComment)
 ]

@@ -76,3 +76,8 @@ class Rental(models.Model):
     rental_date = models.DateField()
     duration = models.IntegerField()
 
+class Comment(models.Model):
+    room_id = models.SmallIntegerField()
+    author = models.CharField(max_length=50)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)

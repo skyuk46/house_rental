@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import *
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
+import datetime
 
 def index(request):
     bestRoom_raw = RoomDetails.objects.filter(balcony= 1)
@@ -59,10 +60,16 @@ def roomDetails(request):
         owner = Users.objects.get(user_id = ownerId)
         waitingUser = WaitingList.objects.all()
         waitingCount = len(waitingUser)
+
+        comments = Comment.objects.filter(room_id= id)
+        numberOfComment = len(comments)
+
         context = {
             'room' : room,
             'owner' : owner,
-            'waitingCount' : waitingCount
+            'waitingCount' : waitingCount,
+            'comments' : comments,
+            'numberOfComment' : numberOfComment
         }
         return render(request, 'room-detail.html',context)
 
@@ -121,8 +128,6 @@ def userConfirm(request):
     if (request.method == "GET"):
         decision = request.GET.get('decision')
         username = request.GET.get('username')
-        print(decision)
-        print(username)
         if (username):
             user = WaitingList.objects.get(username=username)
             if (decision == 'accept'):
@@ -144,3 +149,14 @@ def userConfirm(request):
         'waitingList' : waitingList
     }
     return render(request,'user-confirm.html',context)
+
+def postComment(request):
+    if(request.method == "GET"):
+        author = request.GET.get('author')
+        body = request.GET.get('body')
+        date = datetime.datetime.now()
+        room_id = int(request.GET.get('room'))
+        comment = Comment(room_id = room_id, author = author, body = body,date = date)
+        comment.save()
+        return HttpResponse('Bình luận thành công!')
+

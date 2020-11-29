@@ -388,34 +388,40 @@
           <div class="row">
             <div class="col-md-3 col-lg-4" >
               &nbsp;
+              <h4 style="color: blue;">{{ numberOfComment }} bình luận </h4>
+              {% for comment in comments %}
+              <div style="border-style: ridge; height: 90px; width: 700px;">
+                <span style="font-size: 18px; color: green;"> {{ comment.author }}...</span><span style="font-size: 12px; color: grey;"> {{ comment.date }}</span>
+                <div>            
+                </br>
+                  {{ comment.body }}
+                </div>
+              </div>
+              </br>
+              {% endfor %}
             </div>
             <div class="col-md-3 col-lg-4" >
               &nbsp;
             </div>
             <div class="col-md-3 col-lg-4">
               <div class="property-contact">
-                <form class="form-a">
+                <form class="form-a" action="/postComment" method="GET">
+                  <input type="hidden" name="room" value="{{ room.id }}">
                   <div class="row">
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName"
+                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName" name="author"
                           placeholder="Tên *" required>
                       </div>
                     </div>
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1"
-                          placeholder="Email *" required>
-                      </div>
-                    </div>
-                    <div class="col-md-12 mb-1">
-                      <div class="form-group">
-                        <textarea id="textMessage" class="form-control" placeholder="Bình luận *" name="message" cols="45"
+                        <textarea id="textMessage" class="form-control" placeholder="Bình luận *" cols="45" name="body"
                           rows="8" required></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <button type="submit" class="btn btn-a">Nhận xét</button>
+                      <button class="btn btn-a">Nhận xét</button>
                     </div>
                   </div>
                 </form>
