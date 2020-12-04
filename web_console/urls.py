@@ -15,7 +15,7 @@ urlpatterns = [
    path('search/', views.search),
    path('ownerRoomList/',views.ownerRoomList),
    path('userConfirm/',views.userConfirm),
-   path('postComment/',views.postComment),
+   url(r'^postComment/$',views.postComment),
    path('userProfile/',views.userProfile),
    url(r'^update_rating/$', views.update_rating)
 ]

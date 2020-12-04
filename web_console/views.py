@@ -153,11 +153,11 @@ def userConfirm(request):
     return render(request,'user-confirm.html',context)
 
 def postComment(request):
-    if(request.method == "GET"):
-        author = request.GET.get('author')
-        body = request.GET.get('body')
+    if(request.method == "POST"):
+        author = request.POST.get('author')
+        body = request.POST.get('body')
         date = datetime.datetime.now()
-        room_id = int(request.GET.get('room'))
+        room_id = int(request.POST.get('room_id'))
         comment = Comment(room_id = room_id, author = author, body = body,date = date)
         comment.save()
         return HttpResponse('Bình luận thành công!')

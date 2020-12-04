@@ -428,7 +428,6 @@
             </div>
             <div class="col-md-3 col-lg-4">
               <div class="property-contact">
-                <form class="form-a" action="/postComment" method="GET">
                   <input type="hidden" name="room" id="room" value="{{ room.id }}">
                   <div class="row">
                     <div class="col-md-12 mb-1">
@@ -439,15 +438,14 @@
                     </div>
                     <div class="col-md-12 mb-1">
                       <div class="form-group">
-                        <textarea id="textMessage" class="form-control" placeholder="Bình luận *" cols="45" name="body"
+                        <textarea class="form-control" placeholder="Bình luận *" cols="45" id="inputContent" name="body"
                           rows="8" required></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <button class="btn btn-a">Nhận xét</button>
+                      <button onclick="comment()" type="button" class="btn btn-a">Nhận xét</button>
                     </div>
                   </div>
-                </form>
               </div>
             </div>
           </div>
@@ -633,6 +631,25 @@
        }).done(function(response){
          console.log(response);
        });
+    }
+
+    function comment()
+    {
+        var room = document.getElementById('room');
+        var room_id = room.value;
+        var author = document.getElementById("inputName").value
+        var body = document.getElementById('inputContent').value
+        var token = '{{csrf_token}}';
+
+        $.ajax({
+         headers: { "X-CSRFToken": token },
+         url: '/postComment/',
+         data: {'body': body, 'room_id' : room_id, 'author' : author},
+         type: 'POST'
+       }).done(function(response){
+         console.log(response);
+       });
+       alert("Bình luận thành công");
     }
   </script>
 
