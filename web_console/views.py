@@ -64,12 +64,15 @@ def roomDetails(request):
         comments = Comment.objects.filter(room_id= id)
         numberOfComment = len(comments)
 
+        rates = Rating.objects.filter(room_id= id)
+
         context = {
             'room' : room,
             'owner' : owner,
             'waitingCount' : waitingCount,
             'comments' : comments,
-            'numberOfComment' : numberOfComment
+            'numberOfComment' : numberOfComment,
+            'rates' : rates
         }
         return render(request, 'room-detail.html',context)
 
@@ -113,8 +116,7 @@ def search(request):
     return render(request,'searchResult.html',context)
 
 def ownerRoomList(request):
-    # ownerId = request.GET.get('ownerId')
-    ownerId = 1
+    ownerId = request.GET.get('ownerId')
     roomList = RoomDetails.objects.filter(owner_id=ownerId)
     waitingUser = WaitingList.objects.all()
     waitingCount = len(waitingUser)
@@ -159,4 +161,23 @@ def postComment(request):
         comment = Comment(room_id = room_id, author = author, body = body,date = date)
         comment.save()
         return HttpResponse('Bình luận thành công!')
+
+def userProfile(request):
+    return render(request,'userProfile.html')
+
+def update_rating(request):
+    message = ""
+    if request.method == 'POST':
+        id = int(request.POST.get('room_id'))
+        rate = int(request.POST.get('rating'))
+        rater = request.POST.get('rater')
+        rating = ""
+
+        for i in range(1,rate + 1):
+            rating = rating + str(i)
+        
+        newRating = Rating(room_id= id, rating= rating,rater= rater)
+        newRating.save()
+        message = 'update successful'
+    return HttpResponse(message)
 

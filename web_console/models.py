@@ -81,3 +81,9 @@ class Comment(models.Model):
     author = models.CharField(max_length=50)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+
+class Rating(models.Model):
+    id = models.AutoField(primary_key = True)
+    room_id = models.SmallIntegerField()
+    rating = models.CharField(default='',max_length=10)
+    rater = models.CharField(max_length=50,default="")

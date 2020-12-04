@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -14,5 +15,7 @@ urlpatterns = [
    path('search/', views.search),
    path('ownerRoomList/',views.ownerRoomList),
    path('userConfirm/',views.userConfirm),
-   path('postComment/',views.postComment)
+   path('postComment/',views.postComment),
+   path('userProfile/',views.userProfile),
+   url(r'^update_rating/$', views.update_rating)
 ]

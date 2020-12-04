@@ -1,0 +1,83 @@
+<html>
+{% load static %}
+<head>
+  <title>Easy Accomod-Thuê nhà giá rẻ</title>
+  <link rel="stylesheet" href="{% static 'css\userProfile.css'%}">
+
+    <!-- Favicons -->
+    <link href="{% static 'img\favicon-2.png' %}" rel="icon">
+    <link href="{% static 'img\apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="profile-section">
+      <div class="container">
+        <img src="{% static 'img\profile.png' %}" class="profile-photo">
+        <p class="profile-name">{{ user.name }} (Mã số: {{ user.user_id }}) </p> 
+        <form action="/">
+          <button class="button profile-follow">Về trang chủ</button>
+        </form>
+        <form action="">
+          <button class="button profile-follow">Thông tin tài khoản</button>
+        </form>
+        <form action="/RoomPost">
+          <button class="button profile-follow">Đăng bài mới</button>
+        </form>
+        <form action="/ownerRoomList">
+          <button class="button profile-follow">Danh sách bài đã đăng</button>
+          <input type="hidden" name="ownerId" value="{{ user.user_id }}">
+        </form>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="container">
+        <div class="card">
+          <div class="container">
+            <div class="card-title">Email</div>
+            <div class="card-body">
+              {{ user.email }}
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <div class="card-title">Ngày Sinh</div>
+            <div class="card-body">
+              {{ user.birth }}
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <div class="card-title">Số Điện Thoại</div>
+            <div class="card-body">
+              {{ user.phone }}
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <div class="card-title">Địa Chỉ</div>
+            <div class="card-body">
+              {{ user.address }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

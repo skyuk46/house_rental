@@ -28,6 +28,7 @@
 
     <!-- Main CSS-->
     <link href="{% static 'css/register-login.css'%}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{% static 'css\userProfile.css'%}">
 </head>
 
 <body>
@@ -52,11 +53,12 @@
                         {% if response %}
                             <h4 style="color: green;"> {{ response }}</h4>
                         {% endif %}
-                </form>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Jquery JS-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
