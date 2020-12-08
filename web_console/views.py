@@ -44,7 +44,7 @@ def userRegister(request):
         if form.is_valid() and confirmed == 1:
             form.save()
             return HttpResponseRedirect('/')
-        else:
+        elif form.is_valid():
             waitingUser = WaitingList(username=form.cleaned_data['username'], email=form.cleaned_data['email'], password=form.cleaned_data['password'], name = form.cleaned_data['name'], birth = form.cleaned_data['birth'], phone = form.cleaned_data['phone'], address = form.cleaned_data['address'], user_type = form.cleaned_data['user_type'])
             waitingUser.save()
             return render(request,'userRegister.html',{'message': "Tài khoản của bạn đang được xét duyệt"})
