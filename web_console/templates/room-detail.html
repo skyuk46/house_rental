@@ -386,6 +386,13 @@
                   <li>Phòng mới</li>
                   <li>Khu dân trí cao</li>
                 </ul>
+                {% if user %}
+                <form action="/chat_window">
+                  <button class="btn btn-lg btn-success">Chat với chủ phòng</button>
+                  <input type="hidden" name="receiverName" value="{{ owner.name }}">
+                  <input type="hidden" name="senderName" value="{{ user.name }}">
+                </form>
+                {% endif %}
               </div>
             </div>
           </div>

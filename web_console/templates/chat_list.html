@@ -23,7 +23,7 @@
         <form action="/">
           <button class="button profile-follow">Về trang chủ</button>
         </form>
-        <form action="">
+        <form action="/userProfile">
           <button class="button profile-follow">Thông tin tài khoản</button>
         </form>
         <form action="/RoomPost">
@@ -33,7 +33,7 @@
           <button class="button profile-follow">Danh sách bài đã đăng</button>
           <input type="hidden" name="ownerId" value="{{ user.user_id }}">
         </form>
-        <form action="/chat_list">
+        <form action="">
           <button class="button profile-follow">Tin nhắn</button>
           <input type="hidden" name="name" value="{{ user.name }}">
         </form>
@@ -42,42 +42,20 @@
 
     <div class="detail-section">
       <div class="container">
-        <div class="card">
-          <div class="container">
-            <div class="card-title">Email</div>
-            <div class="card-body">
-              {{ user.email }}
+          <div class="card-title">Danh sách nhắn tin</div>
+          {% for name in all_sender_name %}
+          <div class="card">
+            <div class="container">
+              <div class="card-body">
+                <form action="/chat_window">
+                    <button class="btn btn-lg btn-success">{{ name }}</button>
+                    <input type="hidden" name="receiverName" value="{{ name }}">
+                    <input type="hidden" name="senderName" value="{{ myName }}">
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="container">
-            <div class="card-title">Ngày Sinh</div>
-            <div class="card-body">
-              {{ user.birth }}
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="container">
-            <div class="card-title">Số Điện Thoại</div>
-            <div class="card-body">
-              {{ user.phone }}
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="container">
-            <div class="card-title">Địa Chỉ</div>
-            <div class="card-body">
-              {{ user.address }}
-            </div>
-          </div>
-        </div>
-
+          {% endfor %}
       </div>
     </div>
   </div>

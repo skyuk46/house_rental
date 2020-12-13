@@ -54,6 +54,11 @@
         <button class="button profile-follow">Danh sách bài đã đăng</button>
         <input type="hidden" name="ownerId" value="{{ user.user_id }}">
       </form>
+      &nbsp;
+      <form action="/chat_list">
+        <button class="button profile-follow">Tin nhắn</button>
+        <input type="hidden" name="name" value="{{ user.name }}">
+      </form>
     </div>
     &nbsp;
     <div></div> &nbsp;

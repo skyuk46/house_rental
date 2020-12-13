@@ -17,5 +17,8 @@ urlpatterns = [
    path('userConfirm/',views.userConfirm),
    url(r'^postComment/$',views.postComment),
    path('userProfile/',views.userProfile),
-   url(r'^update_rating/$', views.update_rating)
+   url(r'^update_rating/$', views.update_rating),
+   path('chat_window',views.chat_window),
+   url(r'^send_Comment/$',views.send_Comment),
+   path('chat_list',views.chat_list)
 ]

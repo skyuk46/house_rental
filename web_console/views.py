@@ -3,6 +3,7 @@ from .forms import *
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 import datetime
+from itertools import chain
 
 def index(request):
     bestRoom_raw = RoomDetails.objects.filter(balcony= 1)
@@ -181,3 +182,47 @@ def update_rating(request):
         message = 'update successful'
     return HttpResponse(message)
 
+def chat_window(request):
+    receiverName = request.GET.get('receiverName')
+    senderName = request.GET.get('senderName')
+    senderMessages = Message.objects.filter(receiver= receiverName,sender= senderName)
+    receiverMessages = Message.objects.filter(receiver = senderName,sender= receiverName)
+    Messages = list(chain(senderMessages,receiverMessages))
+
+    def date(e):
+        return e.send_date
+    Messages.sort(key=date)
+
+    context = {
+        'receiverName' : receiverName,
+        'senderName' : senderName,
+        'Messages' : Messages,
+        'numberOfMessage' : len(receiverMessages)
+    }
+    return render(request,'chat_window.html',context)
+
+def send_Comment(request):
+    response = ""
+    if (request.method == "POST"):
+        sender = request.POST.get('sender')
+        receiver = request.POST.get('receiver')
+        message = request.POST.get('message')
+        mes = Message(sender=sender,receiver=receiver,message=message,send_date=datetime.datetime.now())
+        mes.save()
+        response = "Send successfully!"
+    return HttpResponse(response)
+
+def chat_list(request):
+    name = request.GET.get('name')
+    all_chat = Message.objects.filter(receiver=name)
+    all_sender_name_dictionary = all_chat.values('sender').distinct()
+    all_sender_name = []
+    for dic in all_sender_name_dictionary:
+        all_sender_name.append(dic['sender'])
+
+    context = {
+        'all_sender_name' : all_sender_name,
+        'myName' : name
+    }
+
+    return render(request,'chat_list.html',context)

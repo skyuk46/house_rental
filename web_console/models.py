@@ -87,3 +87,10 @@ class Rating(models.Model):
     room_id = models.SmallIntegerField()
     rating = models.CharField(default='',max_length=10)
     rater = models.CharField(max_length=50,default="")
+
+class Message(models.Model):
+    id = models.AutoField(primary_key = True)
+    receiver = models.CharField(max_length=50)
+    sender = models.CharField(max_length=50)
+    message = models.TextField()
+    send_date = models.DateTimeField()
