@@ -46,15 +46,17 @@
         <button class="button profile-follow">Thông tin tài khoản</button>
       </form>
       &nbsp;
+      {% if user.user_type == "owner"%}
       <form action="/RoomPost">
         <button class="button profile-follow">Đăng bài mới</button>
       </form>
       &nbsp;
-      <form action="">
+      <form action="/ownerRoomList">
         <button class="button profile-follow">Danh sách bài đã đăng</button>
         <input type="hidden" name="ownerId" value="{{ user.user_id }}">
       </form>
       &nbsp;
+      {% endif %}
       <form action="/chat_list">
         <button class="button profile-follow">Tin nhắn</button>
         <input type="hidden" name="name" value="{{ user.name }}">
@@ -128,6 +130,9 @@
                         <p class="link-a">Bấm để xem chi tiết ></p>
                       </button>
                       <input type="hidden" name="roomDetails" value="{{ room.id }}">
+                      {% if user.username %}
+                        <input type="hidden" name="user_id" value="{{ user.user_id }}">
+                      {% endif %}
                     </form>
                   </div>
                   <div class="card-footer-a">
@@ -145,12 +150,12 @@
                         <span>{{ room.bedroom }}</span>
                       </li>
                       <li>
-                        <h4 class="card-info-title">Nhà tắm</h4>
-                        <span>{{ room.bathroom }}</span>
+                        <h4 class="card-info-title"><i class="fa fa-eye card-info-title"></i></h4>                      
+                        <span>{{ room.view }}</span>
                       </li>
                       <li>
-                        <h4 class="card-info-title">Bếp</h4>
-                        <span>{{ room.kitchen }}</span>
+                        <h4 class="card-info-title"><i class="heart fa fa-heart card-info-title"></i></h4>                                             
+                        <span>{{ room.favorite }}</span>
                       </li>
                     </ul>
                   </div>

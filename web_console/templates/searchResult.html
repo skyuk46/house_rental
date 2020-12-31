@@ -185,6 +185,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/userConfirm">Duyệt tài khoản</a>
+              <a class="dropdown-item" href="/commentConfirm">Duyệt bình luận</a>
               <a class="dropdown-item" href="/logout">Đăng xuất</a>
             </div>
           </li>
@@ -314,12 +315,12 @@
                         <span>{{ room.bedroom }}</span>
                       </li>
                       <li>
-                        <h4 class="card-info-title">Nhà tắm</h4>
-                        <span>{{ room.bathroom }}</span>
+                        <h4 class="card-info-title"><i class="fa fa-eye card-info-title"></i></h4>                      
+                        <span>{{ room.view }}</span>
                       </li>
                       <li>
-                        <h4 class="card-info-title">Bếp</h4>
-                        <span>{{ room.kitchen }}</span>
+                        <h4 class="card-info-title"><i class="heart fa fa-heart card-info-title"></i></h4>                                             
+                        <span>{{ room.favorite }}</span>
                       </li>
                     </ul>
                   </div>

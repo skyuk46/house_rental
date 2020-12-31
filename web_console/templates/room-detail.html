@@ -55,6 +55,10 @@
       transform: scale(.5);
       will-change: opacity, transform;
   }
+  .heart {
+    font-size: 50px;
+    color: red;
+  }
   </style>
 
 </head>
@@ -180,18 +184,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/roomList">Nhà cho thuê</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Pages
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="property-single.html">Property Single</a>
-              <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item" href="agent-single.html">Agent Single</a>
-            </div>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Yêu thích</a>
           </li>
@@ -203,6 +195,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/userConfirm">Duyệt tài khoản</a>
+              <a class="dropdown-item" href="/commentConfirm">Duyệt bình luận</a>
               <a class="dropdown-item" href="/logout">Đăng xuất</a>
             </div>
           </li>
@@ -357,6 +350,24 @@
               </div>
             </div>
             <div class="col-md-7 col-lg-7 section-md-t3">
+              {% if user.username %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Yêu thích</h3>
+                  </div>
+                </div>
+              </div>
+              {% if favorited %}
+              <div class="property-description">
+                <i class="heart fa fa-heart"></i>
+              </div>
+              {% else %}
+              <div class="property-description">
+                <i class="heart fa fa-heart-o"></i>
+              </div>
+              {% endif %}
+              {% endif %}
               <div class="row">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -601,6 +612,20 @@
   <!-- Template Main Javascript File -->
   <script src="{% static 'js/main.js' %}"></script>
   <script>
+    $(".heart.fa").click(function() {
+      $(this).toggleClass("fa-heart fa-heart-o");
+              var token = '{{csrf_token}}';
+
+        $.ajax({
+         headers: { "X-CSRFToken": token },
+         url: '/favorite/',
+         data: {'room_id' : "{{ room.id }}", 'user_id' : "{{ user.user_id }}"},
+         type: 'POST'
+       }).done(function(response){
+         console.log(response);
+       });
+    });
+
     var count;
     function starmark(item)
     {
@@ -656,7 +681,7 @@
        }).done(function(response){
          console.log(response);
        });
-       alert("Bình luận thành công");
+       alert("Bình luận đang chờ duyệt!");
     }
   </script>
 

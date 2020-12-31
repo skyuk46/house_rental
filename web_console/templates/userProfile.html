@@ -26,6 +26,7 @@
         <form action="">
           <button class="button profile-follow">Thông tin tài khoản</button>
         </form>
+        {% if user.user_type == "owner"%}
         <form action="/RoomPost">
           <button class="button profile-follow">Đăng bài mới</button>
         </form>
@@ -33,6 +34,7 @@
           <button class="button profile-follow">Danh sách bài đã đăng</button>
           <input type="hidden" name="ownerId" value="{{ user.user_id }}">
         </form>
+        {% endif %}
         <form action="/chat_list">
           <button class="button profile-follow">Tin nhắn</button>
           <input type="hidden" name="name" value="{{ user.name }}">

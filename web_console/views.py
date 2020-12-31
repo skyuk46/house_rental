@@ -55,8 +55,20 @@ def userRegister(request):
 
 def roomDetails(request):
     if request.method == 'GET':
+        favorited = False
         id = int(request.GET.get('roomDetails'))
+        try:
+            user_id = int(request.GET.get('user_id'))
+            try:
+                favorite = Favorite.objects.get(user_id = user_id, room_id= id)
+                favorited = True
+            except:
+                favorited = False
+        except:
+            True
         room = RoomDetails.objects.get(id = id)
+        room.view += 1
+        room.save()
         ownerId = room.owner_id
         owner = Users.objects.get(user_id = ownerId)
         waitingUser = WaitingList.objects.all()
@@ -73,7 +85,8 @@ def roomDetails(request):
             'waitingCount' : waitingCount,
             'comments' : comments,
             'numberOfComment' : numberOfComment,
-            'rates' : rates
+            'rates' : rates,
+            'favorited' : favorited
         }
         return render(request, 'room-detail.html',context)
 
@@ -99,8 +112,8 @@ def search(request):
     if (roomType == "All"):
         searchResult_raw2 = searchResult_raw1.all()
     else:
-        searchResult_raw2 = searchResult_raw1.filter(roomType_icontains = roomType)
-    if (roomType == "All"):
+        searchResult_raw2 = searchResult_raw1.filter(roomType__icontains = roomType)
+    if (district == "All"):
         searchResult_raw3 = searchResult_raw2.all()
     else:
         searchResult_raw3 = searchResult_raw2.filter(roomAddress__icontains = district)
@@ -159,9 +172,34 @@ def postComment(request):
         body = request.POST.get('body')
         date = datetime.datetime.now()
         room_id = int(request.POST.get('room_id'))
-        comment = Comment(room_id = room_id, author = author, body = body,date = date)
+        comment = WaitingComment(room_id = room_id, author = author, body = body,date = date)
         comment.save()
         return HttpResponse('Bình luận thành công!')
+
+def commentConfirm(request):
+    if (request.method == "GET"):
+        decision = request.GET.get('decision')
+        id = request.GET.get('comment_id')
+        if (id):
+            comment = WaitingComment.objects.get(id = id)
+            if (decision == 'accept'):
+                author = comment.author
+                body = comment.body
+                date = comment.date
+                room_id = comment.room_id
+                new_comment = Comment(room_id = room_id, author = author, body = body,date = date)
+                new_comment.save()
+                WaitingComment.objects.get(id = id).delete()
+                return HttpResponseRedirect('/commentConfirm')
+            elif (decision == 'decline'):
+                WaitingComment.objects.get(id = id).delete()
+                return HttpResponseRedirect('/commentConfirm')
+            
+    waitingList = WaitingComment.objects.all()
+    context = {
+        'waitingList' : waitingList
+    }
+    return render(request,'comment-confirm.html',context)
 
 def userProfile(request):
     return render(request,'userProfile.html')
@@ -222,7 +260,30 @@ def chat_list(request):
 
     context = {
         'all_sender_name' : all_sender_name,
-        'myName' : name
+        'myName' : name,
+        'rangeSenderName' : range(len(all_sender_name))
     }
 
     return render(request,'chat_list.html',context)
+
+def favorite(request):
+    response = ""
+    if (request.method == "POST"):
+        user_id = int(request.POST.get('user_id'))
+        room_id = int(request.POST.get('room_id'))
+        try:
+            favorite = Favorite.objects.get(user_id = user_id,room_id= room_id)
+            favorite.delete()
+            room = RoomDetails.objects.get(id  = room_id)
+            room.favorite -= 1
+            room.save()
+            response = "Remove favorite completed"
+        except:
+            favorite = Favorite(user_id = user_id,room_id= room_id)
+            favorite.save()
+            room = RoomDetails.objects.get(id  = room_id)
+            room.favorite += 1
+            room.save()
+            response = "Add favorite completed"
+    return HttpResponse(response)
+

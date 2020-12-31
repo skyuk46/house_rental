@@ -63,6 +63,8 @@ class RoomDetails(models.Model):
     balcony = models.IntegerField(default=0)
     waterPrice = models.IntegerField(default=0)
     electricPrice = models.IntegerField(default=0)
+    favorite = models.IntegerField(default=0)
+    view = models.IntegerField(default=0)
     postDate = models.DateField()
     image1 = models.ImageField(upload_to = 'pictures/',default = None)
     image2 = models.ImageField(upload_to = 'pictures/',default = None)
@@ -82,6 +84,13 @@ class Comment(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
+class WaitingComment(models.Model):
+    id = models.AutoField(primary_key=True)
+    room_id = models.SmallIntegerField()
+    author = models.CharField(max_length=50)
+    body = models.TextField()
+    date = models.DateTimeField()
+
 class Rating(models.Model):
     id = models.AutoField(primary_key = True)
     room_id = models.SmallIntegerField()
@@ -94,3 +103,8 @@ class Message(models.Model):
     sender = models.CharField(max_length=50)
     message = models.TextField()
     send_date = models.DateTimeField()
+
+class Favorite(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField()
+    room_id = models.IntegerField()

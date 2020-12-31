@@ -20,5 +20,7 @@ urlpatterns = [
    url(r'^update_rating/$', views.update_rating),
    path('chat_window',views.chat_window),
    url(r'^send_Comment/$',views.send_Comment),
-   path('chat_list',views.chat_list)
+   path('chat_list',views.chat_list),
+   url(r'^favorite/$',views.favorite),
+   path('commentConfirm/',views.commentConfirm)
 ]
